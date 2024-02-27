@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import AddProduct from "../Pages/AddProduct/AddProduct";
-import BrandDetails from "../Pages/Home/BrandDetails";
+import BrandsProducts from "../Pages/Home/BrandsProducts";
 import Home from "../Pages/Home/Home";
 import ItemDetails from "../Pages/ItemDetails";
 import ItemUpdate from "../Pages/ItemUpdate";
@@ -39,8 +39,8 @@ const Routes = createBrowserRouter([
                 element: <Register></Register>
             },
             {
-                path: '/brand-details/:id',
-                element:<BrandDetails></BrandDetails>,
+                path: '/brands-products/:id',
+                element:<BrandsProducts></BrandsProducts>,
                 loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
             },
             {

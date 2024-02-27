@@ -1,19 +1,18 @@
 import { useContext, useEffect, useState } from "react";
-import Rating from "react-rating";
 import { Link, useLoaderData } from "react-router-dom";
 import { ProductContext } from "../../Context/ProductProvider";
 
-const BrandDetails = () => {
+const BrandsProducts = () => {
   const loadedProducts = useLoaderData();
   const { products } = useContext(ProductContext);
-  const [filterBrand, setFilterBrand] = useState([]);
+  const [filterBrand, setFilterBrand] = useState(products);
 
   useEffect(() => {
     const brandDetails = products.filter(
       (product) => product.brand === loadedProducts.brand
     );
     setFilterBrand(brandDetails);
-  }, [products, loadedProducts.brand]);
+  }, [products,loadedProducts.brand]);
 
   return (
     <div className="container mx-auto px-4 md:px-2 lg:px-0">
@@ -37,33 +36,34 @@ const BrandDetails = () => {
                     <p>{brand.type}</p>
                     <p>$ {brand.price}</p>
                     <div>
-            <Rating initialRating={brand.rating} readonly
-          
-            />
-          </div>
+                    
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="space-y-4 text-center py-4 text-white hover:text-red-700 ">
-             <div>
-             <Link to={`/item-details/${brand._id}`}>
-                <button className="px-5 py-2 w-full bg-blue-300 font-semibold">Details</button>
-                </Link>
-
-             </div>
-             <div>
-             <Link to={`/item-update/${brand._id}`}>
-                <button className="px-5 py-2 w-full bg-blue-300 font-semibold">Update</button>
-                </Link>
-             </div>
-
+                <div>
+                  <Link to={`/item-details/${brand._id}`}>
+                    <button className="px-5 py-2 w-full bg-blue-300 font-semibold">
+                      Details
+                    </button>
+                  </Link>
+                </div>
+                <div>
+                  <Link to={`/item-update/${brand._id}`}>
+                    <button className="px-5 py-2 w-full bg-blue-300 font-semibold">
+                      Update
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
     </div>
+   
   );
 };
 
-export default BrandDetails;
+export default BrandsProducts;

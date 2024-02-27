@@ -7,7 +7,6 @@ import ProductCard from "./ProductCard";
 
 const Home = () => {
   const { products } = useContext(ProductContext);
-  console.log (typeof(products))
 
   return (
     <div>

@@ -1,10 +1,10 @@
 import { Card } from "flowbite-react";
-import Rating from "react-rating";
+// import Rating from "react-rating";
 import { useLoaderData } from "react-router-dom";
 
 const ItemDetails = () => {
   const product = useLoaderData();
-  const { rating } = product || {};
+  // const { rating } = product || {};
   return (
     <div className="container mx-auto my-10 flex justify-center items-center h-screen] overflow-hidden">
       <Card className="max-w-sm" horizontal>
@@ -23,11 +23,11 @@ const ItemDetails = () => {
           <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             $ {product.price}
           </h1>
-          <div>
+          {/* <div>
             <Rating initialRating={rating} readonly
           
             />
-          </div>
+          </div> */}
           
         </div>
         <div className="">

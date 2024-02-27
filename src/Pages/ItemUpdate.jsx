@@ -28,7 +28,7 @@ const handleUpdate = e =>{
         headers: {
             'content-type': 'application/json'
         },
-        body:JSON.stringify()
+        body:JSON.stringify(updatedItem)
     })
         .then(res => res.json())
         .then(data => {
@@ -40,12 +40,10 @@ const handleUpdate = e =>{
                 });
               }
         })
-        e.target.reset()
+      
 
 
 }
-
-
 
 
     return (
