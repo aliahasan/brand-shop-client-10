@@ -1,6 +1,70 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { FcGoogle } from "react-icons/fc";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+
 
 const Login = () => {
+const {signInUser , signInWithGoogle} = useContext(AuthContext)
+const location = useLocation ()
+const navigate = useNavigate()
+
+  const handleLogin = e =>{
+    e.preventDefault()
+    const form = new FormData(e.currentTarget);
+    const email =form.get('email');
+    const password = form.get('password');
+    e.currentTarget.reset()
+
+    signInUser(email, password)
+    .then((userCredential) =>{
+       if(userCredential){
+        navigate (location?.state ? location.state : '/')
+       }
+   
+    })
+    .catch((error) =>{
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: error.message                 
+          });
+    })
+
+}
+
+
+const handleGoogleLogin = () =>{
+  signInWithGoogle()
+  .then(userCredential =>{
+    if(userCredential){
+      navigate ('/')
+    }
+  })
+
+  .catch(error =>{
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: error.message
+                         
+    });
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div className="">
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -11,7 +75,7 @@ const Login = () => {
         </div>
 
         <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6">
+          <form onSubmit={handleLogin} className="space-y-6">
             <div>
               <div className="flex items-center justify-between">
                 <label
@@ -69,6 +133,13 @@ const Login = () => {
               Register
             </Link>
           </p>
+
+          <div className="py-4">
+                <button onClick={handleGoogleLogin} className="btn btn-outline w-full text-sm">
+                  <FcGoogle className="text-2xl" />
+                  Login with google
+                </button>
+              </div>
         </div>
       </div>
     </div>

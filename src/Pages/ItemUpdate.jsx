@@ -1,8 +1,16 @@
+import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const AddProduct = () => {
-  const handleAddProduct = (e) => {
-    e.preventDefault();
+const ItemUpdate = () => {
+
+    const updateItem = useLoaderData()
+    console.log(updateItem)
+    const { name, brand, type, description, price, photo, rating, _id } = updateItem || {};
+
+
+const handleUpdate = e =>{
+    e.preventDefault()
+
     const form = e.target;
     const name = form.name.value;
     const brand = form.brand.value;
@@ -12,35 +20,41 @@ const AddProduct = () => {
     const description = form.description.value;
     const photo = form.photo.value;
 
-    const newProduct = {name, brand, type, price, rating, description, photo}
+    const updatedItem = {name, brand, type, price, rating , description, photo} 
+    console.log(updatedItem)
 
-    fetch('http://localhost:5000/products',{
-        method: "POST",
+    fetch(`http://localhost:5000/products/${_id}`,{
+        method: "PUT",
         headers: {
             'content-type': 'application/json'
         },
-        body:JSON.stringify(newProduct)
+        body:JSON.stringify()
     })
         .then(res => res.json())
         .then(data => {
-            if(data.insertedId){
+            if(data.modifiedCount > 0){
                 Swal.fire({
                   title: "Good job!",
-                  text: "Product added successfully!",
+                  text: "Product updated successfully!",
                   icon: "success"
                 });
               }
         })
         e.target.reset()
-  };
 
-  return (
-    <div className="mx-auto  md:mt-24">
+
+}
+
+
+
+
+    return (
+        <div className="mx-auto  md:mt-24">
       <div className=" bg-[#F4F3F0] max-w-7xl mx-auto pb-20">
         <h1 className="text-center text-2xl py-8 underline ">
-          Add Your Product
+          Update Your Product
         </h1>
-        <form onSubmit={handleAddProduct}>
+        <form onSubmit={handleUpdate}>
           <div className="md:flex px-20 gap-x-4">
             <div className="form-control md:w-1/2">
               <label htmlFor="" className="label">
@@ -50,6 +64,7 @@ const AddProduct = () => {
                 <input
                   className="input input-bordered w-full"
                   placeholder="Product Name"
+                  defaultValue={name}
                   type="text"
                   name="name"
                 />
@@ -64,6 +79,7 @@ const AddProduct = () => {
                 <input
                   className="input input-bordered w-full"
                   placeholder="Brand name"
+                  defaultValue={brand}
                   type="text"
                   name="brand"
                 />
@@ -81,6 +97,7 @@ const AddProduct = () => {
                 <input
                   className="input input-bordered w-full"
                   placeholder="Product type"
+                  defaultValue={type}
                   type="text"
                   name="type"
                 />
@@ -97,6 +114,7 @@ const AddProduct = () => {
                   placeholder="Price"
                   type="text"
                   name="price"
+                  defaultValue={price}
                 />
               </label>
             </div>
@@ -113,6 +131,7 @@ const AddProduct = () => {
                   placeholder="Description"
                   type="text"
                   name="description"
+                  defaultValue={description}
                 />
               </label>
             </div>
@@ -126,6 +145,7 @@ const AddProduct = () => {
                   placeholder="Rating"
                   type="text"
                   name="rating"
+                  defaultValue={rating}
                 />
               </label>
             </div>
@@ -139,12 +159,13 @@ const AddProduct = () => {
                 placeholder="Photo url"
                 type="text"
                 name="photo"
+                defaultValue={photo}
               />
             </label>
             <div className="mt-8">
               <input
                 type="submit"
-                value="Add Product"
+                value="Update Product"
                 className="btn btn-block bg-red-400 text-white"
               />
             </div>
@@ -152,7 +173,7 @@ const AddProduct = () => {
         </form>
       </div>
     </div>
-  );
+    );
 };
 
-export default AddProduct;
+export default ItemUpdate;

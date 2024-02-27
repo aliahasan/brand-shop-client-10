@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.primary-btn {
+  @apply border rounded bg-transparent border-white px-2 py-1 md:px-4 md:py-2 lg:px-6 lg:py-2 hover:bg-red-300 btn-outline text-sm duration-300 hover:transform hover:translate-y-[-5px];
+}
+
+.banner-text {
+  @apply absolute  w-1/2 md:w-2/4  top-0 bottom-0 right-4 md:right-12 lg:right-16 mx-auto flex justify-center items-center;
+}
+.banner-text2 {
+  @apply absolute  w-1/2 md:w-2/4  top-0 bottom-0 left-4 md:left-12 lg:left-36 mx-auto flex justify-center items-center;
+}
+.banner-p {
+  @apply text-[16px]  mt-6 leading-6 lg:leading-9 text-center hidden md:block lg:w-1/2 lg:ml-16 from-neutral-200 text-slate-500;
+}

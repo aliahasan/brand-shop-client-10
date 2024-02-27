@@ -1,45 +1,33 @@
-import { useLoaderData } from 'react-router-dom';
+import { useContext } from "react";
+import { ProductContext } from "../../Context/ProductProvider";
+import Banner from "./Banner";
+import Commitment from "./Commitment";
+import MarqueeSlide from "./MarqueeSlide";
+import ProductCard from "./ProductCard";
+
 const Home = () => {
+  const { products } = useContext(ProductContext);
+  console.log (typeof(products))
 
-    const myProducts = useLoaderData()
-    console.log(myProducts)
-
-    return (
-        <div className="dark:bg-slate-800">
-
-<div className="carousel w-full h-auto md:h-[67vh] lg:h-[78vh]">
-  <div id="item1" className="carousel-item w-full">
-    <img src="https://i.ibb.co/tXkc9cJ/fashion-banner3.jpg
-" className="w-full " />
-  </div> 
-  <div id="item2" className="carousel-item w-full">
-    <img src="https://i.ibb.co/vB5p0WL/fashion-banner.jpg" className="w-full" />
-  </div> 
-  <div id="item3" className="carousel-item w-full">
-    <img src="https://i.ibb.co/mJg1rk9/fashion-banner2.jpg" className="w-full" />
-  </div> 
-  <div id="item4" className="carousel-item w-full">
-    <img src="https://i.ibb.co/S0p3R9k/fashion-banner4.jpg" className="w-full" />
-  </div>
-</div> 
-<div className="flex justify-center w-full py-2 gap-2">
-  <a href="#item1" className="btn btn-xs">1</a> 
-  <a href="#item2" className="btn btn-xs">2</a> 
-  <a href="#item3" className="btn btn-xs">3</a> 
-  <a href="#item4" className="btn btn-xs">4</a>
-</div>
-
-
-
-
-
-          <div>
-            {
-
-            }
+  return (
+    <div>
+      <Banner></Banner>
+      <div className="my-12 pt-6">
+        <MarqueeSlide></MarqueeSlide>
+      </div>
+      <section className="py-16">
+        <div className=" container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-sm mx-auto md:max-w-none md:mx-0">
+            {products.map((product) => (
+              <ProductCard key={product._id} product={product}></ProductCard>
+            ))}
           </div>
         </div>
-    );
+      </section>
+
+      <Commitment></Commitment>
+    </div>
+  );
 };
 
 export default Home;
