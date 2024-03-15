@@ -1,10 +1,35 @@
 import { Card } from "flowbite-react";
-// import Rating from "react-rating";
 import { useLoaderData } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const ItemDetails = () => {
   const product = useLoaderData();
-  // const { rating } = product || {};
+
+
+  const handleAddToCart = () => {
+      fetch('http://localhost:5000/cartProducts', {
+        method: "POST",
+        headers:{
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(product)
+      })
+      .then(res=> res.json())
+      .then(data => {
+        console.log(data)
+        if(data.insertedId){
+          Swal.fire({
+            icon: "success",
+            title: "Congratulations",
+            text: 'Product successfully added'                 
+          });
+
+
+        }
+      })
+  }
+
+
   return (
     <div className="container mx-auto my-10 flex justify-center items-center h-screen] overflow-hidden">
       <Card className="max-w-sm" horizontal>
@@ -23,16 +48,13 @@ const ItemDetails = () => {
           <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             $ {product.price}
           </h1>
-          {/* <div>
-            <Rating initialRating={rating} readonly
-          
-            />
-          </div> */}
-          
+         
         </div>
         <div className="">
-            <button className=" bg-red-500 w-full px-3 py-2 text-white rounded-sm">Add to cart</button>
-          </div>
+          <button onClick={handleAddToCart} className=" bg-red-500 w-full px-3 py-2 text-white rounded-sm">
+            Add to cart
+          </button>
+        </div>
       </Card>
     </div>
   );

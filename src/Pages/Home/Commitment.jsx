@@ -3,7 +3,9 @@ import { GiReturnArrow } from "react-icons/gi";
 import { MdOutlineLocalShipping } from "react-icons/md";
 const Commitment = () => {
   return (
-    <div className="md:flex justify-between items-center px-12 space-y-5 md:space-y-0">
+    <div className="container mx-auto">
+      <div className="md:flex justify-between items-center  space-y-5 md:space-y-0 ">
+
       <div className="text-center">
         <GiReturnArrow className="text-5xl flex mx-auto" />
         <div className="md:space-y-3">
@@ -11,6 +13,7 @@ const Commitment = () => {
           <p>Mirum est notare quam littera gothica, quam nunc putamus parum</p>
         </div>
       </div>
+
       <div className="text-center ">
         <BiSupport className="text-5xl flex mx-auto" />
         <div className="md:space-y-3">
@@ -18,6 +21,7 @@ const Commitment = () => {
           <p>Mirum est notare quam littera gothica, quam nunc putamus parum</p>
         </div>
       </div>
+
       <div className="text-center">
         <MdOutlineLocalShipping className="text-5xl flex mx-auto" />
         <div className="md:space-y-3">
@@ -25,6 +29,8 @@ const Commitment = () => {
           <p>Mirum est notare quam littera gothica, quam nunc putamus parum</p>
         </div>
       </div>
+      
+    </div>
     </div>
   );
 };

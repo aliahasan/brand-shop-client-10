@@ -3,6 +3,8 @@ import { Link, useLoaderData } from "react-router-dom";
 import { ProductContext } from "../../Context/ProductProvider";
 
 const BrandsProducts = () => {
+
+  
   const loadedProducts = useLoaderData();
   const { products } = useContext(ProductContext);
   const [filterBrand, setFilterBrand] = useState(products);
@@ -14,8 +16,13 @@ const BrandsProducts = () => {
     setFilterBrand(brandDetails);
   }, [products,loadedProducts.brand]);
 
-  return (
-    <div className="container mx-auto px-4 md:px-2 lg:px-0">
+  
+
+  return ( 
+    <div>
+
+
+      <div className="container mx-auto px-4 md:px-2 lg:px-0">
       <div className="my-10 grid grid-cols-1 md:grid-cols-2  py-10  rounded-md gap-6">
         {filterBrand.map((brand) => (
           <div key={brand._id}>
@@ -61,6 +68,7 @@ const BrandsProducts = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
    
   );

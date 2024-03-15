@@ -1,10 +1,12 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const ItemUpdate = () => {
 
+
+const ItemUpdate = () => {
+  const navigate = useNavigate()
     const updateItem = useLoaderData()
-    console.log(updateItem)
+  
     const { name, brand, type, description, price, photo, rating, _id } = updateItem || {};
 
 
@@ -38,6 +40,7 @@ const handleUpdate = e =>{
                   text: "Product updated successfully!",
                   icon: "success"
                 });
+                navigate (`/brands-products/${_id}`)
               }
         })
       
