@@ -52,6 +52,7 @@ const AddProduct = () => {
                   placeholder="Product Name"
                   type="text"
                   name="name"
+                  required
                 />
               </label>
             </div>
@@ -66,6 +67,7 @@ const AddProduct = () => {
                   placeholder="Brand name"
                   type="text"
                   name="brand"
+                  required
                 />
               </label>
             </div>
@@ -83,6 +85,7 @@ const AddProduct = () => {
                   placeholder="Product type"
                   type="text"
                   name="type"
+                  required
                 />
               </label>
             </div>
@@ -97,6 +100,7 @@ const AddProduct = () => {
                   placeholder="Price"
                   type="text"
                   name="price"
+                  required
                 />
               </label>
             </div>
@@ -113,6 +117,7 @@ const AddProduct = () => {
                   placeholder="Description"
                   type="text"
                   name="description"
+                  required
                 />
               </label>
             </div>
@@ -126,6 +131,7 @@ const AddProduct = () => {
                   placeholder="Rating"
                   type="text"
                   name="rating"
+                  required
                 />
               </label>
             </div>
@@ -139,6 +145,7 @@ const AddProduct = () => {
                 placeholder="Photo url"
                 type="text"
                 name="photo"
+                required
               />
             </label>
             <div className="mt-8">
