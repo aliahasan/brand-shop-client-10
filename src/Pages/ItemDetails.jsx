@@ -1,33 +1,34 @@
 import { Card } from "flowbite-react";
 import { useLoaderData } from "react-router-dom";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 const ItemDetails = () => {
   const product = useLoaderData();
 
+  
 
   const handleAddToCart = () => {
-      fetch('http://localhost:5000/cartProducts', {
-        method: "POST",
-        headers:{
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify(product)
-      })
-      .then(res=> res.json())
-      .then(data => {
-        console.log(data)
-        if(data.insertedId){
+   
+
+    fetch(`http://localhost:5000/cartProducts/`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
           Swal.fire({
             icon: "success",
             title: "Congratulations",
-            text: 'Product successfully added'                 
+            text: "Product successfully added",
           });
-
-
         }
-      })
-  }
+      });
+  };
 
 
   return (
@@ -48,10 +49,12 @@ const ItemDetails = () => {
           <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             $ {product.price}
           </h1>
-         
         </div>
         <div className="">
-          <button onClick={handleAddToCart} className=" bg-red-500 w-full px-3 py-2 text-white rounded-sm">
+          <button
+            onClick={() => handleAddToCart(product)}
+            className=" bg-red-500 w-full px-3 py-2 text-white rounded-sm"
+          >
             Add to cart
           </button>
         </div>

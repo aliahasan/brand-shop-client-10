@@ -23,7 +23,7 @@ const Home = () => {
 
     setMyProducts(allProducts);
   }, [products]);
-
+  
   return (
     <div>
       <Banner></Banner>

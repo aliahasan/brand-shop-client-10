@@ -16,6 +16,8 @@ const BrandsProducts = () => {
 
   return (
     <div>
+      <div></div>
+
       <div className="container mx-auto px-4 md:px-2 lg:px-0">
         <div className="my-10 grid grid-cols-1 md:grid-cols-2  py-10  rounded-md gap-6">
           {brandsProducts.map((brand) => (
@@ -28,7 +30,6 @@ const BrandsProducts = () => {
                 />
 
                 <div className="flex justify-center items-center ">
-
                   <div className="text-center">
                     <h1 className="text-xl font-bold">{brand.brand}</h1>
                     <div className="font-medium">
@@ -40,7 +41,6 @@ const BrandsProducts = () => {
                       <p>$ {brand.price}</p>
                     </div>
                   </div>
-                  
                 </div>
                 <div className="space-y-4 text-center py-4 text-white hover:text-red-700 ">
                   <div>
