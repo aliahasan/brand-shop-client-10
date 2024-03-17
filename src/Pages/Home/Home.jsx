@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import Navigate from "../../Components/Navigate";
 import { ProductContext } from "../../Context/ProductProvider";
 import Banner from "./Banner";
 import Commitment from "./Commitment";
@@ -43,6 +44,9 @@ const Home = () => {
       </section>
 
       <Commitment></Commitment>
+    <div className="container mx-auto my-10 px-8 md:px-0">
+    <Navigate></Navigate>
+    </div>
     </div>
   );
 };
