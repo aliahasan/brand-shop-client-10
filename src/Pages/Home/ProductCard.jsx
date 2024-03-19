@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
 
-      <div className="absolute top-2 -right-10 group-hover:right-2 p-2 opacity-0 group-hover:opacity-55 transition-all duration-300 drop-shadow-xl">
+      <div className="absolute top-2 -right-10 group-hover:right-2 p-2 opacity-0 group-hover:opacity-80 transition-all duration-300 drop-shadow-xl">
         <Link to={`/brands-products/${_id}`}>
           <button>
             <div className="flex justify-center items-center bg-white px-2 py-2">
