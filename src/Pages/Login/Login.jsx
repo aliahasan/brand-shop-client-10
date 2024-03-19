@@ -21,6 +21,7 @@ const navigate = useNavigate()
     .then((userCredential) =>{
        if(userCredential){
         navigate (location?.state ? location.state : '/')
+        console.log(location.state)
        }
    
     })
@@ -39,7 +40,7 @@ const handleGoogleLogin = () =>{
   signInWithGoogle()
   .then(userCredential =>{
     if(userCredential){
-      navigate ('/')
+      navigate (location?.state ? location.state : '/')
     }
   })
 
@@ -52,17 +53,6 @@ const handleGoogleLogin = () =>{
     });
   })
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
   return (
