@@ -3,11 +3,11 @@ import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import Nodata from "../../Components/Nodata/Nodata";
-
 const MyCart = () => {
   const cartProducts = useLoaderData();
 
   const [remainingProducts, setRemainingProducts] = useState(cartProducts);
+
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -43,7 +43,7 @@ const MyCart = () => {
     });
   };
 
-  console.log(remainingProducts.length)
+  console.log(remainingProducts.length);
 
   return (
     <div>
@@ -55,8 +55,9 @@ const MyCart = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {remainingProducts.map((product) => (
-              <div key={product._id} className="mx-auto">
-                <Card className="max-w-sm" horizontal>
+              <div key={product._id} className="mx-auto " >
+               <div >
+               <Card className="max-w-sm" horizontal >
                   <img src={product.photo} alt="" />
                   <h3 className="text-2xl font-bold tracking-tight text-blue-700 dark:text-white">
                     {product.brand}
@@ -82,6 +83,7 @@ const MyCart = () => {
                     </button>
                   </div>
                 </Card>
+               </div>
               </div>
             ))}
           </div>

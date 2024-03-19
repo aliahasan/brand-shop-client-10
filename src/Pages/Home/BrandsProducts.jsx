@@ -1,6 +1,9 @@
+import Aos from "aos";
+import 'aos/dist/aos.css';
 import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { ProductContext } from "../../Context/ProductProvider";
+
 
 const BrandsProducts = () => {
   const { products } = useContext(ProductContext);
@@ -14,15 +17,21 @@ const BrandsProducts = () => {
     setBrandsProducts(filterBrands);
   }, [products, loadedProducts.brand]);
 
+  useEffect(()=>{
+    Aos.init({
+      duration:1500
+    })
+  },[])
+
   return (
     <div>
       <div></div>
 
       <div className="container mx-auto px-4 md:px-2 lg:px-0">
-        <div className="my-10 grid grid-cols-1 md:grid-cols-2  py-10  rounded-md gap-6">
+        <div className="my-10 grid grid-cols-1 md:grid-cols-2  py-10  rounded-md gap-6" >
           {brandsProducts.map((brand) => (
-            <div key={brand._id}>
-              <div className="w-full ">
+            <div key={brand._id} data-aos="zoom-in" className="overflow-x-hidden overflow-y-hidden">
+              <div className="w-full " >
                 <img
                   src={brand.photo}
                   alt=""
