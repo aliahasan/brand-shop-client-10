@@ -14,7 +14,7 @@ const AddProduct = () => {
 
     const newProduct = { name, brand, type, price, rating, description, photo };
 
-    fetch("http://localhost:5000/products", {
+    fetch("https://brand-shop-server-murex-omega.vercel.app/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -7,7 +7,7 @@ const ItemDetails = () => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/cartProducts")
+    fetch("https://brand-shop-server-murex-omega.vercel.app/cartProducts")
       .then((res) => res.json())
       .then((data) => {
         setCart(data);
@@ -26,7 +26,7 @@ const ItemDetails = () => {
       setCart([...cart, product]);
     }
 
-    fetch("http://localhost:5000/cartProducts", {
+    fetch("https://brand-shop-server-murex-omega.vercel.app/cartProducts", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -20,7 +20,7 @@ const Routes = createBrowserRouter([
             {
                 path:'/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/products')
+                loader: () => fetch('https://brand-shop-server-murex-omega.vercel.app/products')
                 
             },
             {
@@ -34,7 +34,7 @@ const Routes = createBrowserRouter([
                 element: <PrivateRoute>
                     <MyCart></MyCart>
                 </PrivateRoute>,
-               loader: () => fetch('http://localhost:5000/cartProducts')
+               loader: () => fetch('https://brand-shop-server-murex-omega.vercel.app/cartProducts')
             },
             {
                 path: '/login',
@@ -47,21 +47,21 @@ const Routes = createBrowserRouter([
             {
                 path: '/brands-products/:id',
                 element:<BrandsProducts></BrandsProducts>,
-                loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({params}) => fetch(`https://brand-shop-server-murex-omega.vercel.app/products/${params.id}`)
             },
             {
                 path:'/item-details/:id',
                 element:<PrivateRoute>
                     <ItemDetails></ItemDetails>
                 </PrivateRoute>,
-                loader:  ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader:  ({params}) => fetch(`https://brand-shop-server-murex-omega.vercel.app/products/${params.id}`)
             },
             {
                 path:'/item-update/:id',
                 element: <PrivateRoute>
                     <ItemUpdate></ItemUpdate>
                 </PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({params}) => fetch(`https://brand-shop-server-murex-omega.vercel.app/products/${params.id}`)
             }
         ]
     }

@@ -23,7 +23,7 @@ const handleUpdate = e =>{
     const updatedItem = {name, brand, type, price, rating , description, photo} 
     console.log(updatedItem)
 
-    fetch(`http://localhost:5000/products/${_id}`,{
+    fetch(`https://brand-shop-server-murex-omega.vercel.app/products/${_id}`,{
         method: "PUT",
         headers: {
             'content-type': 'application/json'
