@@ -4,13 +4,12 @@ import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MyCart = () => {
-
   const cartProducts = useLoaderData();
-  const [remainingProducts, setRemainingProducts] = useState(cartProducts)
+ 
+  const [remainingProducts, setRemainingProducts] = useState(cartProducts);
 
   const handleDelete = (_id) => {
-    console.log(_id);
-
+  
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -20,37 +19,33 @@ const MyCart = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-
       if (result.isConfirmed) {
-
         fetch(`http://localhost:5000/cartProducts/${_id}`, {
           method: "DELETE",
         })
-
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
             if (data.deletedCount > 0) {
-
               Swal.fire({
                 title: "Deleted!",
                 text: "Your product has been deleted.",
                 icon: "success",
               });
 
-              const remainingItems = cartProducts.filter(cartProduct => cartProduct._id !== _id)
-              setRemainingProducts(remainingItems)
-
+              const remainingItems = cartProducts.filter(
+                (cartProduct) => cartProduct._id !== _id
+              );
+              setRemainingProducts(remainingItems);
             }
-
           });
       }
     });
   };
+  
   return (
     <div className="container mx-auto my-12 ">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
         {remainingProducts.map((product) => (
           <div key={product._id} className="mx-auto">
             <Card className="max-w-sm" horizontal>
@@ -81,7 +76,6 @@ const MyCart = () => {
             </Card>
           </div>
         ))}
-
       </div>
     </div>
   );

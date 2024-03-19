@@ -1,10 +1,8 @@
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-
-
 const ItemUpdate = () => {
-  const navigate = useNavigate()
+    const navigate = useNavigate()
     const updateItem = useLoaderData()
   
     const { name, brand, type, description, price, photo, rating, _id } = updateItem || {};
@@ -44,8 +42,6 @@ const handleUpdate = e =>{
               }
         })
       
-
-
 }
 
 

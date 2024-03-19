@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import logo from "../../images/logo.jpg";
 
-
 // functional activities starts from here
 
 const Navbar = () => {
@@ -46,23 +45,19 @@ const Navbar = () => {
           My Cart
         </NavLink>
       </li>
-     
     </>
   );
 
   const handleLogout = () => {
     logOut()
-
       .then(() => {
-        navigate("/")
+        navigate("/");
         Swal.fire({
           icon: "success",
           text: `logout successful`,
         });
-
       })
       .catch((error) => {
-
         setSignOutError(error.message);
         Swal.fire({
           title: "opps....",
@@ -70,7 +65,6 @@ const Navbar = () => {
           icon: "error",
         });
       });
-
   };
 
   return (

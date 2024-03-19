@@ -1,8 +1,6 @@
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 const AddProduct = () => {
-
-  
   const handleAddProduct = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,28 +12,27 @@ const AddProduct = () => {
     const description = form.description.value;
     const photo = form.photo.value;
 
-    const newProduct = {name, brand, type, price, rating, description, photo}
+    const newProduct = { name, brand, type, price, rating, description, photo };
 
-    fetch('http://localhost:5000/products',{
-        method: "POST",
-        headers: {
-            'content-type': 'application/json'
-        },
-        body:JSON.stringify(newProduct)
+    fetch("http://localhost:5000/products", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
     })
-        .then(res => res.json())
-        .then(data => {
-            if(data.insertedId){
-                Swal.fire({
-                  title: "Good job!",
-                  text: "Product added successfully!",
-                  icon: "success"
-                });
-                
+      .then((res) => res.json())
 
-              }
-        })
-        e.target.reset()
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Good job!",
+            text: "Product added successfully!",
+            icon: "success",
+          });
+        }
+      });
+    e.target.reset();
   };
 
   return (
@@ -75,9 +72,8 @@ const AddProduct = () => {
                 />
               </label>
             </div>
-
           </div>
-      
+
           <div className="md:flex px-20 gap-x-4">
             <div className="form-control md:w-1/2">
               <label htmlFor="" className="label">
@@ -109,7 +105,7 @@ const AddProduct = () => {
               </label>
             </div>
           </div>
-          
+
           <div className="md:flex px-20 gap-x-4">
             <div className="form-control md:w-1/2">
               <label htmlFor="" className="label">
@@ -140,7 +136,7 @@ const AddProduct = () => {
               </label>
             </div>
           </div>
-       
+
           <div className="px-20 mt-4">
             <label className="input-group">
               <span className="label-text text-black">Photo URL</span>

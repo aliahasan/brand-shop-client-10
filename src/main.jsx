@@ -9,9 +9,9 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-     <ProductProvider>
-     <RouterProvider router={Routes} />
-     </ProductProvider>
+      <ProductProvider>
+        <RouterProvider router={Routes} />
+      </ProductProvider>
     </AuthProvider>
   </React.StrictMode>
 );
